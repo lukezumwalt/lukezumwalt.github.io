@@ -178,6 +178,7 @@ a:hover { opacity: 0.75; }
 
 .hero-cta {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
   animation: fadeUp 0.8s 0.3s ease both;
