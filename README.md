@@ -65,11 +65,11 @@ You can check propagation at https://dnschecker.org
 
 ## Customization Checklist
 
-- [ ] Replace "Your Name" everywhere in `index.html`
-- [ ] Update monogram initials in the header
-- [ ] Fill in your LinkedIn / GitHub / GitLab handles in the link cards
-- [ ] Update `CNAME` with your actual domain
-- [ ] Write your About section
+- [X] Replace "Your Name" everywhere in `index.html`
+- [X] Update monogram initials in the header
+- [X] Fill in your LinkedIn / GitHub / GitLab handles in the link cards
+- [X] Update `CNAME` with your actual domain
+- [X] Write your About section
 - [ ] Add real project entries
 - [ ] Drop a `favicon.ico` in `assets/images/`
 - [ ] Tweak `--accent` color in `css/styles.css` to your preference
