@@ -153,6 +153,7 @@ a:hover { opacity: 0.75; }
   text-transform: uppercase;
   margin-bottom: 16px;
   animation: fadeUp 0.7s ease both;
+  text-align: center;
 }
 
 .hero-name {
@@ -164,6 +165,7 @@ a:hover { opacity: 0.75; }
   color: var(--text-primary);
   margin-bottom: 20px;
   animation: fadeUp 0.8s 0.1s ease both;
+  text-align: center;
 }
 
 .hero-tagline {
