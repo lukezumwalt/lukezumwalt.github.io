@@ -11,15 +11,15 @@
 }
 
 :root {
-  --bg:          #0d0f0e;
+  --bg:          #b0ac96;
   --bg-card:     #141614;
   --bg-card-hover: #1a1d1a;
   --border:      #2a2d2a;
-  --accent:      #7fff6e;   /* swap this to change the whole vibe */
-  --accent-dim:  #4a9943;
-  --text-primary: #e8ede8;
-  --text-muted:  #8a9a8a;
-  --text-faint:  #4a5a4a;
+  --accent:      #e55a5a;   /* swap this to change the whole vibe */
+  --accent-dim:  #ce7d60;
+  --text-primary: #3b39e9;
+  --text-muted:  #7a8be0;
+  --text-faint:  #c4cbf0;
 
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-body: 'DM Sans', sans-serif;

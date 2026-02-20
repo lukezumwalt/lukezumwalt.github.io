@@ -70,6 +70,6 @@ You can check propagation at https://dnschecker.org
 - [X] Fill in your LinkedIn / GitHub / GitLab handles in the link cards
 - [X] Update `CNAME` with your actual domain
 - [X] Write your About section
-- [ ] Add real project entries
+- [X] Add real project entries
 - [ ] Drop a `favicon.ico` in `assets/images/`
-- [ ] Tweak `--accent` color in `css/styles.css` to your preference
+- [X] Tweak `--accent` color in `css/styles.css` to your preference
