@@ -11,30 +11,30 @@
 }
 
 :root {
-  /* === red · white · blue — Patriot Terminal palette ===
-     60 % — frost-white page canvas
-     30 % — midnight-navy card panels
-     10 % — Old Glory crimson accents                      */
+  /* === red · white · blue — Warm Canvas Editorial palette ===
+     60 % — warm parchment page canvas
+     30 % — warm cream card surface (floats above canvas)
+     10 % — Old Glory crimson accents                         */
 
   /* Backgrounds */
-  --bg:            #eef1f8;   /* frost white   — cool off-white page canvas  */
-  --bg-card:       #0a1122;   /* midnight navy — dark terminal panels         */
-  --bg-card-hover: #101a35;   /* royal night   — lifted card hover state      */
-  --border:        #1d2d50;   /* steel navy    — visible panel borders        */
+  --bg:            #c9b99a;   /* warm tan canvas — parchment page ground      */
+  --bg-card:       #ede5d3;   /* warm cream      — elevated card surface       */
+  --bg-card-hover: #f5f0e6;   /* warm ivory      — hovered card state          */
+  --border:        #b5a588;   /* warm sand       — borders and rules           */
 
   /* Accents — red family */
-  --accent:        #cc2b35;   /* Old Glory crimson — CTAs, labels, links      */
-  --accent-dim:    #9e2228;   /* deep burgundy    — secondary accents/borders */
+  --accent:        #cc2b35;   /* Old Glory crimson — CTAs, labels, links       */
+  --accent-dim:    #9e2228;   /* deep burgundy    — secondary accents/borders  */
 
-  /* Text hierarchy — blue family (readable on both light bg and dark cards) */
-  --text-primary:  #4d7bd4;   /* royal blue  — hero name, card headings       */
-  --text-muted:    #7a9ccc;   /* cornflower  — body text, nav links           */
-  --text-faint:    #b0c4e8;   /* pale sky    — labels, arrows, footnotes      */
+  /* Text hierarchy — deep navy (WCAG AA on both tan canvas and cream cards) */
+  --text-primary:  #1e3060;   /* deep navy   — headings, card titles           */
+  --text-muted:    #2d4e80;   /* medium navy — body text, nav links            */
+  --text-faint:    #4a6e9a;   /* muted steel — labels, arrows, footnotes       */
 
   /* RGB channels — used exclusively inside rgba() calls below */
-  --accent-rgb:         204, 43,  53;
-  --bg-card-rgb:         10, 17,  34;
-  --text-primary-rgb:    77, 123, 212;
+  --accent-rgb:         204,  43,  53;
+  --bg-card-rgb:        237, 229, 211;
+  --text-primary-rgb:    30,  48,  96;
 
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-body: 'DM Sans', sans-serif;
