@@ -11,15 +11,30 @@
 }
 
 :root {
-  --bg:          #b0ac96;
-  --bg-card:     #141614;
-  --bg-card-hover: #1a1d1a;
-  --border:      #2a2d2a;
-  --accent:      #e55a5a;   /* swap this to change the whole vibe */
-  --accent-dim:  #ce7d60;
-  --text-primary: #3b39e9;
-  --text-muted:  #7a8be0;
-  --text-faint:  #c4cbf0;
+  /* === red · white · blue — Patriot Terminal palette ===
+     60 % — frost-white page canvas
+     30 % — midnight-navy card panels
+     10 % — Old Glory crimson accents                      */
+
+  /* Backgrounds */
+  --bg:            #eef1f8;   /* frost white   — cool off-white page canvas  */
+  --bg-card:       #0a1122;   /* midnight navy — dark terminal panels         */
+  --bg-card-hover: #101a35;   /* royal night   — lifted card hover state      */
+  --border:        #1d2d50;   /* steel navy    — visible panel borders        */
+
+  /* Accents — red family */
+  --accent:        #cc2b35;   /* Old Glory crimson — CTAs, labels, links      */
+  --accent-dim:    #9e2228;   /* deep burgundy    — secondary accents/borders */
+
+  /* Text hierarchy — blue family (readable on both light bg and dark cards) */
+  --text-primary:  #4d7bd4;   /* royal blue  — hero name, card headings       */
+  --text-muted:    #7a9ccc;   /* cornflower  — body text, nav links           */
+  --text-faint:    #b0c4e8;   /* pale sky    — labels, arrows, footnotes      */
+
+  /* RGB channels — used exclusively inside rgba() calls below */
+  --accent-rgb:         204, 43,  53;
+  --bg-card-rgb:         10, 17,  34;
+  --text-primary-rgb:    77, 123, 212;
 
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-body: 'DM Sans', sans-serif;
@@ -76,7 +91,7 @@ a:hover { opacity: 0.75; }
   z-index: 100;
   height: var(--header-h);
   border-bottom: 1px solid var(--border);
-  background: rgba(13, 15, 14, 0.85);
+  background: rgba(var(--bg-card-rgb), 0.90);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -133,7 +148,7 @@ a:hover { opacity: 0.75; }
   transform: translateX(-50%);
   width: 600px;
   height: 400px;
-  background: radial-gradient(ellipse at center, rgba(127,255,110,0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -207,7 +222,7 @@ a:hover { opacity: 0.75; }
   opacity: 1;
   background: var(--bg-card-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(127,255,110,0.2);
+  box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.25);
 }
 
 .btn-ghost {
@@ -270,7 +285,7 @@ a:hover { opacity: 0.75; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(127,255,110,0.03) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(var(--text-primary-rgb), 0.05) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -289,8 +304,8 @@ a:hover { opacity: 0.75; }
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--accent);
-  background: rgba(127,255,110,0.08);
-  border: 1px solid rgba(127,255,110,0.2);
+  background: rgba(var(--accent-rgb), 0.10);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
   border-radius: 4px;
   padding: 6px 8px;
   letter-spacing: 0.05em;
