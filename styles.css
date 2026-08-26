@@ -1,6 +1,7 @@
 /* ============================================
    PERSONAL SITE — styles.css
-   Aesthetic: Dark terminal / editorial mono
+   Aesthetic: Warm dusk terminal — dark, low-glare
+   base with a coral/amber/violet psychedelic accent
    ============================================ */
 
 /* ---------- RESET & BASE ---------- */
@@ -11,30 +12,34 @@
 }
 
 :root {
-  /* === red · white · blue — Warm Canvas Editorial palette ===
-     60 % — warm parchment page canvas
-     30 % — warm cream card surface (floats above canvas)
-     10 % — Old Glory crimson accents                         */
+  /* === Warm Dusk palette ===
+     A dark, warm (not blue-black) canvas keeps glare low for
+     long reading sessions. The coral → amber → violet gradient
+     is the "psychedelic" accent — used sparingly (CTAs, the
+     name, glows) so it stays a highlight, not a wash.        */
 
   /* Backgrounds */
-  --bg:            #c9b99a;   /* warm tan canvas — parchment page ground      */
-  --bg-card:       #ede5d3;   /* warm cream      — elevated card surface       */
-  --bg-card-hover: #f5f0e6;   /* warm ivory      — hovered card state          */
-  --border:        #b5a588;   /* warm sand       — borders and rules           */
+  --bg:            #1b1023;   /* deep warm plum — page ground                  */
+  --bg-card:       #271531;   /* raised aubergine — card surface               */
+  --bg-card-hover: #32193f;   /* lifted card state                             */
+  --border:        rgba(255, 183, 140, 0.16); /* warm, faint hairline          */
 
-  /* Accents — red family */
-  --accent:        #cc2b35;   /* Old Glory crimson — CTAs, labels, links       */
-  --accent-dim:    #9e2228;   /* deep burgundy    — secondary accents/borders  */
+  /* Accents — coral / amber / violet */
+  --accent:        #ff7a63;   /* coral   — CTAs, labels, links                 */
+  --accent-dim:    #c1495c;   /* rose    — secondary accents/borders           */
+  --accent-2:      #ffbe5c;   /* amber   — gradient stop / warm highlight      */
+  --accent-3:      #c496e6;   /* violet  — gradient stop / cool counterpoint   */
+  --gradient-psy:  linear-gradient(115deg, var(--accent) 0%, var(--accent-2) 48%, var(--accent-3) 100%);
 
-  /* Text hierarchy — deep navy (WCAG AA on both tan canvas and cream cards) */
-  --text-primary:  #1e3060;   /* deep navy   — headings, card titles           */
-  --text-muted:    #2d4e80;   /* medium navy — body text, nav links            */
-  --text-faint:    #4a6e9a;   /* muted steel — labels, arrows, footnotes       */
+  /* Text hierarchy — warm off-white, never pure white/black (easier on eyes) */
+  --text-primary:  #f7ead9;   /* warm ivory  — headings, card titles           */
+  --text-muted:    #cdb9c4;   /* dusty lilac — body text, nav links            */
+  --text-faint:    #96829c;   /* muted mauve — labels, arrows, footnotes       */
 
   /* RGB channels — used exclusively inside rgba() calls below */
-  --accent-rgb:         204,  43,  53;
-  --bg-card-rgb:        237, 229, 211;
-  --text-primary-rgb:    30,  48,  96;
+  --accent-rgb:        255, 122,  99;
+  --bg-card-rgb:        39,  21,  49;
+  --text-primary-rgb:  247, 234, 217;
 
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-body: 'DM Sans', sans-serif;
@@ -72,9 +77,62 @@ a:hover { opacity: 0.75; }
   position: fixed;
   inset: 0;
   z-index: 999;
-  opacity: 0.035;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 128px 128px;
+  mix-blend-mode: overlay;
+}
+
+/* ---------- AURORA BACKDROP ---------- */
+/* Slow-drifting, low-opacity color blobs behind the hero — the
+   "psychedelic" note, kept subtle enough to stay easy on the eyes
+   and to not compete with foreground text for attention. */
+.aurora {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.aurora::before {
+  top: -10%;
+  left: -12%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+}
+
+.aurora::after {
+  bottom: -15%;
+  right: -10%;
+  background: radial-gradient(circle, var(--accent-3) 0%, transparent 70%);
+  animation-delay: -13s;
+  animation-duration: 32s;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(6%, 8%) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora::before,
+  .aurora::after {
+    animation: none;
+  }
 }
 
 /* ---------- CONTAINER ---------- */
@@ -148,7 +206,7 @@ a:hover { opacity: 0.75; }
   transform: translateX(-50%);
   width: 600px;
   height: 400px;
-  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -181,9 +239,27 @@ a:hover { opacity: 0.75; }
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--text-primary);
   margin-bottom: 20px;
   animation: fadeUp 0.8s 0.1s ease both;
+
+  /* Focal point of the page: the one place the full gradient runs
+     at full strength (isolation/Von Restorff effect — the eye is
+     drawn to the thing that looks different from everything else). */
+  background: var(--gradient-psy);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeUp 0.8s 0.1s ease both, gradientShift 10s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name { animation: fadeUp 0.8s 0.1s ease both; }
 }
 
 .hero-tagline {
@@ -214,15 +290,17 @@ a:hover { opacity: 0.75; }
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--gradient-psy);
+  background-size: 160% 160%;
+  color: #1b1023;
   font-weight: 600;
+  box-shadow: 0 4px 24px rgba(var(--accent-rgb), 0.35);
 }
 .btn-primary:hover {
   opacity: 1;
-  background: var(--bg-card-hover);
+  background-position: 100% 0%;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.25);
+  box-shadow: 0 6px 32px rgba(var(--accent-rgb), 0.5);
 }
 
 .btn-ghost {
@@ -295,7 +373,7 @@ a:hover { opacity: 0.75; }
   background: var(--bg-card-hover);
   border-color: var(--accent-dim);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.18), 0 8px 32px rgba(0,0,0,0.35);
 }
 .link-card:hover::before { opacity: 1; }
 
